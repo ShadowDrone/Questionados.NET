@@ -22,13 +22,17 @@ namespace Questionados.Services
 
         public Pregunta BuscarPreguntaPorId(int id)
         {
-                return repo.Preguntas.Include(p => p.Opciones).Where(p => p.PreguntaId == id).FirstOrDefault(); //El includee es para que traiga info de las respuestas
-            
+            return repo.Preguntas.Include(p => p.Opciones)
+                    .Include(p => p.Categoria)
+                    .Where(p => p.PreguntaId == id).FirstOrDefault(); //El includee es para que traiga info de las respuestas
+
         }
 
         public List<Pregunta> TraerPreguntas()
         {
-            return repo.Preguntas.Include(e => e.Opciones).ToList();
+            return repo.Preguntas.Include(p => p.Opciones)
+                .Include(p => p.Categoria)
+                .ToList();
 
         }
 

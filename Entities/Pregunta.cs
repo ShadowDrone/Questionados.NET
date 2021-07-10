@@ -18,7 +18,7 @@ namespace Questionados.Entities
 
         public string Enunciado { get; set; }
 
-
+        [JsonIgnore]
         [Column("categoria_id")] //Esta columna actua como ForeignKey automagicamente
         public int CategoriaId { get; set; }
 
@@ -26,7 +26,6 @@ namespace Questionados.Entities
         public Categoria Categoria { get; set; }
 
         //Relacion uno a muchos automagicamente
-        [JsonIgnore]
         public List<Respuesta> Opciones { get; set; } = new List<Respuesta>();
 
 
